@@ -1,0 +1,2 @@
+This file contains additional project information.
+Created as part of the Git essentials lab.

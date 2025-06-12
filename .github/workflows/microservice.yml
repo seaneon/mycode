@@ -29,8 +29,8 @@ jobs:
 
       - name: Tag and push image
         run: |
-          docker tag flask-microservice ghcr.io/${{ secrets.GHCR_USERNAME }}/flask-microservice:latest
-          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/flask-microservice:latest
+          docker tag flask-microservice ghcr.io/${{ secrets.GHCR_USERNAME }}/broken-image:latest
+          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/broken-image:latest
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f k8s-deploy.yml

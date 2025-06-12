@@ -3,5 +3,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello, DevOps!"
-
+    return undefined_variable  # This will raise a NameError

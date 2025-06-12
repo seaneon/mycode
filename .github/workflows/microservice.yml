@@ -24,3 +24,14 @@ jobs:
       - name: Run tests inside container
         run: docker run --rm flask-microservice
 
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
+      - name: Tag and push image
+        run: |
+          docker tag flask-microservice ghcr.io/${{ secrets.GHCR_USERNAME }}/flask-microservice:latest
+          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/flask-microservice:latest
+
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f k8s-deploy.yml
+          
